@@ -1,15 +1,20 @@
 <% @confessions.each do |confession| %>
-  <p><%= link_to confession.text, confession_path(confession) %> (<%= confession.category.name %>)</p>
+  <div class="confession" >
+    <p class=<%= confession.category.name %>><%= link_to confession.text, confession_path(confession) %></p>
+  </div>
 <% end %>
 
-<div class='post-confession'>
-<%= form_for :confession, html: {class: 'form'}, method: 'post', url: {action: 'create'} do |f| %>
-  <%= f.text_field :text, placeholder: "What's up?" %>
-  <%= f.select(:category_id) do %>
-    <% @categories.each do |category| %>
-      <%= content_tag(:option, category.name, value: category.id) %>
+</main>
+<footer>
+  <div class='post-confession'>
+  <%= form_for :confession, html: {class: 'form'}, method: 'post', url: {action: 'create'} do |f| %>
+    <%= f.text_field :text, placeholder: "What's up?" %>
+    <%= f.select(:category_id) do %>
+      <% @categories.each do |category| %>
+        <%= content_tag(:option, category.name, value: category.id) %>
+      <% end %>
     <% end %>
+    <%= f.submit "'Fess" %>
   <% end %>
-  <%= f.submit "'Fess" %>
-<% end %>
-</div>
+  </div>
+</footer>
