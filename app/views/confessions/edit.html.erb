@@ -1,0 +1,13 @@
+<div class='edit-confession'>
+<%= form_for :confession, html: {class: 'form'}, method: 'patch', url: {action: 'update'} do |f| %>
+  <%= f.text_field :text, value: @confession.text %>
+  <%= f.select(:category_id, {selected: @confession.category}) do %>
+    <% @categories.each do |category| %>
+      <%= content_tag(:option, category.name, value: category.id) %>
+    <% end %>
+  <% end %>
+  <%= f.submit "Fix" %>
+<% end %>
+</div>
+
+<%= link_to "Nevermind.", confession_path(params[:id]) %>
