@@ -1,5 +1,9 @@
 <div class='confession'>
 <p><%= @confession.text %></p>
+  <div class='buttons'>
+    <%= link_to("✎", edit_confession_path(@confession), :class => "button") %>
+    <%= button_to("✕", @confession, method: :delete, :class=>"button") %>
+  </div>
 </div>
 
 <%= link_to "Back to the Wall", confessions_path %>
