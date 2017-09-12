@@ -17,9 +17,9 @@
 body {
   background-image: url('/assets/background.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-attachment: fixed;
+  background-repeat: repeat-y;
+  background-position: top center; 
+  background-attachment: scroll; 
   font-family: 'Dosis', sans-serif;
   margin: 0;
   padding: 0;
@@ -34,76 +34,161 @@ header {
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header:hover {
   height: 50px;
-  background-color: rgba(132,255,92, .35);
+  background-color: rgba(132,255,92, .3);
 }
 
 header h2 {
   font-family: 'Sedgwick Ave Display', cursive;
   font-size: 32px;
-  transform: translateY(-15px) translateX(15px);
-  margin: 0;
+  margin-left: 20px;
   padding: 0;
   opacity: 0;
   transition: .25s all;
 }
 
-header:hover h2 {
-  transform: translateY(5px) translateX(15px);
+header .category-picker {
+  display: flex;
+  list-style: none;
+  opacity: 0;
+  transition: .25s opacity ease-in;
+  margin-right: 20px;
+}
+
+header:hover h2,
+header:hover .category-picker {
   opacity: 1;
   user-select: none;
   cursor: default;
 }
 
+.category-picker li {
+  margin: 0px 5px;
+}
+
+.category-picker a {
+  text-decoration: none;
+  color: black;
+  padding: 3px 6px;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color: rgba(132,255,92, 1);
+}
+
 main {
-  padding: 50px 15px 0px 15px;
+  padding: 23px 15px 0px 15px;
   height: calc(100vh - 63px);
-  overflow: auto;
-  margin-bottom: 33px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 41px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.single p {
+  color: black;
+  text-shadow: 0 0px 0px black, 1px 0 2px black, 0 -3px 2px black, -1px 0 2px black;
+}
+
+.single .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single .bottom p {
+  font-size: 24px;
+  font-family: "Dosis", sans-serif;
+  text-shadow: 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black, -1px 0 1px black;
+}
+
+.single .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.confession .buttons a,
+.confession .buttons .button {
+  font-size: 30px;
+  font-family: "Dosis", sans-serif;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 5px 10px;
+  padding: 0;
+  text-shadow: 0 1px 1px rgba(132,255,92, 1), 1px 0 1px rgba(132,255,92, 1), 0 -1px 1px rgba(132,255,92, 1), -1px 0 1px rgba(132,255,92, 1);
+  transition: .1s all;
+}
+
+.confession .buttons a:hover,
+.confession .buttons .button:hover {
+  color: rgba(132,255,92, 1);
+  text-shadow: 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black, -1px 0 1px black;
 }
 
 .confession p, .confession a {
   font-family: 'Permanent Marker', cursive;
-  font-size: 32px;
+  font-size: 60px;
+  line-height: 45px;
+  margin: 0;
 }
 
 .confession a {
   text-decoration: none;
   color: inherit;
-  font-size: 32px;
-}
-
-.confession p {
-  margin: 0;
 }
 
 .confession .General {
-  color: #CDDE69;
-  text-shadow: 0 1px white, 1px 0 white, 0 -1px white, -1px 0 white;
-  text-shadow: inset 0 1px black, inset 1px 0 black, inset 0 -1px black, inset -1px 0 black;
+  /* color: #CDDE69; */
+  color: goldenrod;
+  text-shadow: 0 0px 0px goldenrod, 1px 0 2px goldenrod, 0 -3px 2px goldenrod, -1px 0 2px goldenrod;
 }
 
 .confession .Dark {
   color: #5A70DE;
-  text-shadow: 0 1px white, 1px 0 white, 0 -1px white, -1px 0 white;
+  text-shadow: 0 0px 0px #5A70DE, 1px 0 1px #5A70DE, 0 -3px 2px #5A70DE, -1px 0 1px #5A70DE;
 }
 
 .confession .Heartwarming {
   color: #73C4F5;
-  text-shadow: 0 1px white, 1px 0 white, 0 -1px white, -1px 0 white;
+  text-shadow: 0 0px 0px #73C4F5, 1px 0 3px #73C4F5, 0 -3px 3px #73C4F5, -1px 0 3px #73C4F5;
 }
 
 .confession .Gross {
   color: #A8CA9D;
-  text-shadow: 0 1px white, 1px 0 white, 0 -1px white, -1px 0 white;
+  text-shadow: 0 0px 0px #A8CA9D, 1px 0 3px #A8CA9D, 0 -3px 3px #A8CA9D, -1px 0 3px #A8CA9D;
 }
 
 .confession .Steamy {
   color: #F5816B;
-  text-shadow: 0 1px white, 1px 0 white, 0 -1px white, -1px 0 white;
+  text-shadow: 0 0px 0px #F5816B, 1px 0 3px #F5816B, 0 -3px 3px #F5816B, -1px 0 3px #F5816B;
+}
+
+.edit-confession {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-size: 30px;
+  width: 100vw;
+}
+
+.edit-confession form {
+  width: 100%;
+  display: flex;
 }
 
 .post-confession {
@@ -113,7 +198,6 @@ main {
   width: 100vw;
   box-sizing: border-box;
   padding: 5px;
-  /* background-color: rgba(139,184,222, 1); */
   background-color: rgba(132,255,92, 1);
 }
 
@@ -125,12 +209,33 @@ main {
 }
 
 .post-confession input[type='text'],
-.post-confession select {
+.post-confession input[type='submit'],
+.post-confession select,
+.edit-confession input[type='text'],
+.edit-confession input[type='submit'],
+.edit-confession select {
   font-family: 'Dosis', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   border: transparent;
 }
 
 .post-confession input[type='text'] {
+  flex-grow: 1;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+.post-confession select {
+  margin: 0px 5px;
+}
+
+/* .post-confession input[type='submit'] {
+  background-color: black;
+  color: rgba(132,255,92, 1);
+} */
+
+.edit-confession input[type='text'] {
+  background-color: lightgray;
   flex-grow: 1;
 }
