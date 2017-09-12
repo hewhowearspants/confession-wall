@@ -1,6 +1,8 @@
 <% @confessions.each do |confession| %>
-  <div class="confession" >
-    <p class=<%= confession.category.name %>><%= link_to confession.text, confession_path(confession) %></p>
+  <div class="confession" style=<%= "width:300px;max-height:400px;transform:rotate(#{rand(-45..45)}deg)" %>>
+    <p class=<%= confession.category.name %>>
+      <%= link_to confession.text, confession_path(confession) %>
+    </p>
   </div>
 <% end %>
 
