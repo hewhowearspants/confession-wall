@@ -9,7 +9,17 @@
   </head>
 
   <body>
-    <header><h2>The Confession WaLL</h2></header>
+    <header>
+      <h2>The Confession WaLL</h2>
+      <ul class='category-picker'>
+        <li><%= link_to "All", confessions_path %></li>
+        <li><%= link_to "GEN", category_path(1)%></li>
+        <li><%= link_to "OMG", category_path(2)%></li>
+        <li><%= link_to "AWW", category_path(3)%></li>
+        <li><%= link_to "EWW", category_path(4)%></li>
+        <li><%= link_to "OOH", category_path(5)%></li>
+      </ul>
+    </header>
     <main>
       <%= yield %>
     </main>
